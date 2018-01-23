@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -10,5 +12,13 @@ public class Main {
         System.out.print("Enter your name: ");
         String name = sc.nextLine();
         System.out.println("Welcome " + name + "!");
+
+        ArrayList<Integer> absences = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < name.length(); i++) {
+            int nums = rand.nextInt(11);
+            absences.add(nums);
+        }
+        System.out.println("The elements are" + absences);
     }
 }
