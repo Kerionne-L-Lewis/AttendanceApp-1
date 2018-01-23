@@ -20,5 +20,13 @@ public class Main {
             absences.add(nums);
         }
         System.out.println("The elements are" + absences);
+
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) == 0) {
+                count++;
+            }
+        }
+        System.out.println("There are " + count + " number of students with perfect attendance");
     }
 }
