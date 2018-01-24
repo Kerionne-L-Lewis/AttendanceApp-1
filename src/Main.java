@@ -41,6 +41,11 @@ public class Main {
 
         ArrayList<Integer> studentIndex=indexOfAbsence(absences);
         System.out.println("List of Student indexes with 1 absence "+ studentIndex);
+
+        System.out.print("How many times does the course meet per week? ");
+        int course=sc.nextInt();
+
+
     }
 
     private static ArrayList indexOfAbsence(ArrayList<Integer> absences) {
