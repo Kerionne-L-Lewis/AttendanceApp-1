@@ -38,6 +38,21 @@ public class Main {
         int few =fewerAbsencesSum(absences);
         double pct = percentage(few);
         System.out.println("The percentage of students who have fewer than 3 absences " + pct);
+
+        ArrayList<Integer> studentIndex=indexOfAbsence(absences);
+        System.out.println("List of Student indexes with 1 absence "+ studentIndex);
+    }
+
+    private static ArrayList indexOfAbsence(ArrayList<Integer> absences) {
+        ArrayList<Integer>listIndexes=new ArrayList<>();
+        int stdIndex=0;
+        for (int i = 0; i <absences.size() ; i++) {
+            if (absences.get(i) == 1) {
+                stdIndex = i;
+                listIndexes.add(stdIndex);
+            }
+        }
+        return listIndexes;
     }
 
     private static int fewerAbsencesSum(ArrayList<Integer> absences) {
