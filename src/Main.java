@@ -35,6 +35,24 @@ public class Main {
         double avg = average(absences, sum);
         System.out.println("The Average is " + avg);
 
+        int few =fewerAbsencesSum(absences);
+        double pct = percentage(few);
+        System.out.println("The percentage of students who have fewer than 3 absences " + pct);
+    }
+
+    private static int fewerAbsencesSum(ArrayList<Integer> absences) {
+        int sum=0;
+        for (int i = 0; i <absences.size() ; i++) {
+            if (absences.get(i)<3){
+                sum=absences.get(i)+sum;
+            }
+        }
+        return sum;
+    }
+
+    private static double percentage(int few) {
+        double percentage =(few*100) /few;
+        return percentage;
     }
 
     private static int sumAbsences(ArrayList<Integer> absences) {
@@ -48,6 +66,8 @@ public class Main {
     private static double average(ArrayList<Integer> absences, int sum) {
         double avg = (double) sum / absences.size();
         return avg;
+
+
     }
 }
 
