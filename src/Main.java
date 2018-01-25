@@ -39,7 +39,7 @@ public class Main {
         double pct = percentage(few);
         System.out.println("The percentage of students who have fewer than 3 absences " + pct);
 
-        ArrayList<Integer> studentIndex=indexOfAbsence(absences);
+        ArrayList<Integer> studentIndex=indexOfAbsence(absences,1);
         System.out.println("List of Student indexes with 1 absence "+ studentIndex);
 
         System.out.print("How many times does the course meet per week? ");
@@ -48,11 +48,11 @@ public class Main {
 
     }
 
-    private static ArrayList indexOfAbsence(ArrayList<Integer> absences) {
+    private static ArrayList indexOfAbsence(ArrayList<Integer> absences, int numOfAbsences) {
         ArrayList<Integer>listIndexes=new ArrayList<>();
         int stdIndex=0;
         for (int i = 0; i <absences.size() ; i++) {
-            if (absences.get(i) == 1) {
+            if (absences.get(i) == numOfAbsences) {
                 stdIndex = i;
                 listIndexes.add(stdIndex);
             }
