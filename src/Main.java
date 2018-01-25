@@ -35,7 +35,7 @@ public class Main {
         double avg = average(absences, sum);
         System.out.println("The Average is " + avg);
 
-        int few =fewerAbsencesSum(absences);
+        int few =fewerAbsencesSum(absences,3);
         double pct = percentage(few);
         System.out.println("The percentage of students who have fewer than 3 absences " + pct);
 
@@ -44,6 +44,9 @@ public class Main {
 
         System.out.print("How many times does the course meet per week? ");
         int course=sc.nextInt();
+
+        Arr
+
 
 
     }
@@ -60,10 +63,10 @@ public class Main {
         return listIndexes;
     }
 
-    private static int fewerAbsencesSum(ArrayList<Integer> absences) {
+    private static int fewerAbsencesSum(ArrayList<Integer> absences,int numOfAbsences){
         int sum=0;
         for (int i = 0; i <absences.size() ; i++) {
-            if (absences.get(i)<3){
+            if (absences.get(i)<numOfAbsences){
                 sum=absences.get(i)+sum;
             }
         }
