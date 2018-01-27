@@ -48,12 +48,35 @@ public class Main {
          ArrayList<Integer>indexFe= moreThanAbsences(absences);
         System.out.println("List of index of students with twice or more absences" + indexFe);
         double fePercentage= percentageOfFe(indexFe);
-        System.out.println("Percentage of those who fed "+ fePercentage);
-       // System.out.printf("Formatted %d divided by %d is %.2f%%")
+        System.out.printf("There are %.2f%% of students who FE the course", fePercentage );
+
+        System.out.println("How many times does the course meet per week? ");
+        ArrayList<Integer>indexOfNonFe=nonFeAbsences(absences);
+
+
+       double avgNonFe= nonFeAverage(indexOfNonFe);
+        System.out.println("The list of students who did not FE the course" +indexFe+
+                "\n Here is the avgerage of that list"+avgNonFe);
 
 
 
 
+    }
+
+    private static double nonFeAverage(ArrayList<Integer> indexOfNonFe) {
+        return sumAbsences(indexOfNonFe)/indexOfNonFe.size();
+    }
+
+    private static ArrayList<Integer> nonFeAbsences(ArrayList<Integer> absences) {
+        ArrayList<Integer>indexOfNonFe= new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        int course = sc.nextInt();
+        for (int i = 0; i <absences.size(); i++) {
+            if (!(absences.get(i) > (course * 2))){
+                indexOfNonFe.add(i);
+            }
+        }
+        return indexOfNonFe;
     }
 
     private static double percentageOfFe(ArrayList<Integer> indexFe) {
@@ -71,6 +94,7 @@ public class Main {
             if (absences.get(i) > (course * 2)) {
                 indexOfFe.add(i);
             }
+
 
         }
         return  indexOfFe;
