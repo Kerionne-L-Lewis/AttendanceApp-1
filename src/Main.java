@@ -1,3 +1,5 @@
+import sun.misc.FormattedFloatingDecimal;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -32,23 +34,46 @@ public class Main {
 
         int sum = sumAbsences(absences);
 
-        double avg = average(absences, sum);
+        double avg = average(absences);
         System.out.println("The Average is " + avg);
 
         int few =fewerAbsencesSum(absences,3);
-        double pct = percentage(few);
+        double pct = percentage(absences);
         System.out.println("The percentage of students who have fewer than 3 absences " + pct);
 
         ArrayList<Integer> studentIndex=indexOfAbsence(absences,1);
         System.out.println("List of Student indexes with 1 absence "+ studentIndex);
 
         System.out.print("How many times does the course meet per week? ");
-        int course=sc.nextInt();
+         ArrayList<Integer>indexFe= moreThanAbsences(absences);
+        System.out.println("List of index of students with twice or more absences" + indexFe);
+        double fePercentage= percentageOfFe(indexFe);
+        System.out.println("Percentage of those who fed "+ fePercentage);
+       // System.out.printf("Formatted %d divided by %d is %.2f%%")
 
-        Arr
 
 
 
+    }
+
+    private static double percentageOfFe(ArrayList<Integer> indexFe) {
+       int sum =sumAbsences(indexFe);
+        double percentage = (sum*100)/sum;
+        return percentage;
+
+    }
+
+    private static ArrayList<Integer> moreThanAbsences(ArrayList<Integer> absences) {
+        ArrayList<Integer> indexOfFe = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        int course = sc.nextInt();
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) > (course * 2)) {
+                indexOfFe.add(i);
+            }
+
+        }
+        return  indexOfFe;
     }
 
     private static ArrayList indexOfAbsence(ArrayList<Integer> absences, int numOfAbsences) {
@@ -73,7 +98,8 @@ public class Main {
         return sum;
     }
 
-    private static double percentage(int few) {
+    private static double percentage(ArrayList<Integer> absences) {
+       int few=fewerAbsencesSum( absences, 3);
         double percentage =(few*100) /few;
         return percentage;
     }
@@ -86,9 +112,8 @@ public class Main {
         return sum;
     }
 
-    private static double average(ArrayList<Integer> absences, int sum) {
-        double avg = (double) sum / absences.size();
-        return avg;
+    private static double average(ArrayList<Integer> absences) {
+        return (sumAbsences(absences))/absences.size();
 
 
     }
