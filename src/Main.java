@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -38,7 +35,7 @@ public class Main {
 
         int few = fewerAbsencesSum(absences, 3);
         double pct = percentage(absences);
-        System.out.println("The percentage of students who have fewer than 3 absences " + pct);
+        System.out.println("The percentage of students who have fewer than 3 absences: " + pct);
 
         ArrayList<Integer> studentIndex = indexOfAbsence(absences, 1);
         System.out.println("List of Student indexes with 1 absence " + studentIndex);
@@ -49,16 +46,16 @@ public class Main {
         double fePercentage = percentageOfFe(indexFe);
         System.out.printf("There are %.2f%% of students who FE the course", fePercentage);
 
-        System.out.println("\nHow many times does the course meet per week? ");
+        System.out.print("\nHow many times does the course meet per week? ");
         ArrayList<Integer> indexOfNonFe = nonFeAbsences(absences);
 
 
         double avgNonFe = nonFeAverage(indexOfNonFe);
         System.out.println("The list of students who did not FE the course" + indexFe +
-                "\n Here is the average of that list " + avgNonFe);
+                "\nHere is the average of that list " + avgNonFe);
 
        ArrayList<Integer> changeList= addToAbsences(absences);
-        System.out.println("This is the changed List "+ changeList);
+        System.out.println("Changes "+ changeList);
 
         Collections.sort(changeList);
         System.out.println("Sorted List " + changeList);
@@ -66,6 +63,16 @@ public class Main {
         Collections.shuffle(changeList);
         System.out.println("Shuffled List"+ changeList);
 
+        Set<Integer> unique=howMany(absences);
+        System.out.println("Absence list" + absences +"\t has( "+ unique.size()+ ") unique absences" );
+    }
+
+    public static Set<Integer> howMany(ArrayList<Integer> absences){
+        Set<Integer>absenceList = new HashSet<>();
+        for (int i = 0; i <absences.size(); i++) {
+            absenceList.add(absences.get(i));
+        }
+        return absenceList;
     }
 
     private static ArrayList<Integer> addToAbsences(ArrayList<Integer> absences) {
