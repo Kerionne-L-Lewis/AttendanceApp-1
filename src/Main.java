@@ -72,7 +72,20 @@ public class Main {
 
         outputMap(absences);
 
+        userSort(absences);
 
+    }
+
+    public static void userSort (ArrayList<Integer> absences){
+        for (int i = 0; i <absences.size() ; i++) {
+            for (int j = 0; j <absences.size() ; j++) {
+                if (absences.get(i)<absences.get(j)){
+                    int temp=absences.get(i);
+                    absences.set(i, absences.get(j));
+                    absences.set(j, temp);
+                }
+            }
+        }
     }
 
      private static void outputMap(ArrayList<Integer> absences) {
@@ -86,12 +99,6 @@ public class Main {
 
              }
          }
-
-
-
-
-
-
 
     private static void stars(int duplicateCount) {
         for (int i = 0; i < duplicateCount; i++) {
