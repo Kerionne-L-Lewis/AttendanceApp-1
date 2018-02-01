@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class Main {
@@ -68,30 +69,32 @@ public class Main {
 
         Map<Integer, Integer> duplicateCount = countCopies(absences);
         System.out.println("map" + duplicateCount);
-        stars(duplicateCount);
 
-        Map<Integer, Integer> printing =outputMap(absences);
-        System.out.println(printing);
+        outputMap(absences);
+
 
     }
 
-     private static Map<Integer, Integer> outputMap(ArrayList<Integer> absences) {
+     private static void outputMap(ArrayList<Integer> absences) {
          Map<Integer, Integer> duplicateCount = countCopies(absences);
-         for (int dupe : absences) {
-             if (duplicateCount.containsKey(dupe)) {
-                 stars(duplicateCount);
-                 duplicateCount.put(dupe, ;)
-             } return duplicateCount;
+         for (Map.Entry<Integer, Integer> dupe : duplicateCount.entrySet()) {
+             int key = entry.getKey();
+             int value=entry.getValue();
+             System.out.println("the key is " + key + " and its value is " + value );
+             System.out.print( key + "\t" );
+             stars( value );
+
+             }
          }
-     }
 
 
 
 
 
 
-    private static void stars(Map<Integer, Integer> duplicateCount) {
-        for (int i = 0; i < duplicateCount.size(); i++) {
+
+    private static void stars(int duplicateCount) {
+        for (int i = 0; i < duplicateCount; i++) {
             System.out.print("*");
         }
     }
