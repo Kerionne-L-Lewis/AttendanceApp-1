@@ -54,37 +54,81 @@ public class Main {
         System.out.println("The list of students who did not FE the course" + indexFe +
                 "\nHere is the average of that list " + avgNonFe);
 
-       ArrayList<Integer> changeList= addToAbsences(absences);
-        System.out.println("Changes "+ changeList);
+        ArrayList<Integer> changeList = addToAbsences(absences);
+        System.out.println("Changes " + changeList);
 
         Collections.sort(changeList);
         System.out.println("Sorted List " + changeList);
 
         Collections.shuffle(changeList);
-        System.out.println("Shuffled List"+ changeList);
+        System.out.println("Shuffled List" + changeList);
 
-        Set<Integer> unique=howMany(absences);
-        System.out.println("Absence list" + absences +"\t has( "+ unique.size()+ ") unique absences" );
+        Set<Integer> unique = howMany(absences);
+        System.out.println("Absence list" + absences + "has(" + unique.size() + ") unique absences");
+
+        Map<Integer, Integer> duplicateCount = countCopies(absences);
+        System.out.println("map" + duplicateCount);
+        stars(duplicateCount);
+
+        Map<Integer, Integer> printing =outputMap(absences);
+        System.out.println(printing);
+
     }
 
-    public static Set<Integer> howMany(ArrayList<Integer> absences){
-        Set<Integer>absenceList = new HashSet<>();
-        for (int i = 0; i <absences.size(); i++) {
+     private static Map<Integer, Integer> outputMap(ArrayList<Integer> absences) {
+         Map<Integer, Integer> duplicateCount = countCopies(absences);
+         for (int dupe : absences) {
+             if (duplicateCount.containsKey(dupe)) {
+                 stars(duplicateCount);
+                 duplicateCount.put(dupe, ;)
+             } return duplicateCount;
+         }
+     }
+
+
+
+
+
+
+    private static void stars(Map<Integer, Integer> duplicateCount) {
+        for (int i = 0; i < duplicateCount.size(); i++) {
+            System.out.print("*");
+        }
+    }
+
+
+    public static Map<Integer, Integer> countCopies(ArrayList<Integer> absences) {
+        Map<Integer, Integer> countDupes = new HashMap<>();
+        for (int i = 0; i < absences.size(); i++) {
+            int dupe = absences.get(i);
+            if (countDupes.containsKey(dupe)) {
+                int count = countDupes.get(dupe);
+                countDupes.put(dupe, count + 1);
+            } else {
+                countDupes.put(dupe, 1);
+            }
+        }
+        return countDupes;
+    }
+
+    public static Set<Integer> howMany(ArrayList<Integer> absences) {
+        Set<Integer> absenceList = new HashSet<>();
+        for (int i = 0; i < absences.size(); i++) {
             absenceList.add(absences.get(i));
         }
         return absenceList;
     }
 
     private static ArrayList<Integer> addToAbsences(ArrayList<Integer> absences) {
-        for (int i = 0; i <absences.size() ; i++) {
-            if (absences.get(i)>absences.get(0)){
-                absences.set(i, absences.get(i)+ -3);
-                if (absences.get(i)<0){
-                    absences.set(i,0);
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) > absences.get(0)) {
+                absences.set(i, absences.get(i) + -3);
+                if (absences.get(i) < 0) {
+                    absences.set(i, 0);
                 }
-                 if (absences.get(i)>15){
-                    absences.set(i,15);
-                 }
+                if (absences.get(i) > 15) {
+                    absences.set(i, 15);
+                }
             }
         }
         return absences;
@@ -108,7 +152,7 @@ public class Main {
 
     private static double percentageOfFe(ArrayList<Integer> indexFe) {
         int sum = sumAbsences(indexFe);
-        double percentage = sum/ indexFe.size();
+        double percentage = sum / indexFe.size();
         return percentage;
 
     }
