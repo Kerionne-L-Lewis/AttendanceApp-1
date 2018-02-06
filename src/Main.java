@@ -74,6 +74,34 @@ public class Main {
 
         userSort(absences);
 
+        userShuffle(absences);
+
+        names();
+
+    }
+
+    private static void names() {
+        ArrayList<String>distinctNames= new ArrayList<>();
+        distinctNames.add("Pauline");
+        distinctNames.add("Joy");
+        distinctNames.add("Heaven");
+        distinctNames.add("Mindy");
+        distinctNames.add("Rashad");
+        System.out.println("\nDistinct Names "+ distinctNames);
+        }
+
+
+    public static void userShuffle(ArrayList<Integer>absences)    {
+        for (int i = 0; i <absences.size() ; i++) {
+            for (int j = 0; j <absences.size() ; j++) {
+                if (absences.get(i)%2==0){
+                    int temp=absences.get(i);
+                    absences.set(i, absences.get(j) );
+                    absences.set(j, temp);
+                }
+            }
+        }
+        System.out.println("\nUser defined shuffled "+ absences);
     }
 
     public static void userSort (ArrayList<Integer> absences){
@@ -86,13 +114,14 @@ public class Main {
                 }
             }
         }
+        System.out.println("\nUser defined sort"+ absences);
     }
 
      private static void outputMap(ArrayList<Integer> absences) {
          Map<Integer, Integer> duplicateCount = countCopies(absences);
          for (Map.Entry<Integer, Integer> dupe : duplicateCount.entrySet()) {
-             int key = entry.getKey();
-             int value=entry.getValue();
+             int key = dupe.getKey();
+             int value=dupe.getValue();
              System.out.println("the key is " + key + " and its value is " + value );
              System.out.print( key + "\t" );
              stars( value );
