@@ -76,19 +76,24 @@ public class Main {
 
         userShuffle(absences);
 
-        names();
+        ArrayList<String>distinctNames=new ArrayList<>();
+        distinctNames=initializeNames();
+        System.out.println("\nThe distinct names are "+ distinctNames);
+
+
 
     }
 
-    private static void names() {
+    private static ArrayList<String> initializeNames() {
         ArrayList<String>distinctNames= new ArrayList<>();
         distinctNames.add("Pauline");
         distinctNames.add("Joy");
         distinctNames.add("Heaven");
         distinctNames.add("Mindy");
         distinctNames.add("Rashad");
-        System.out.println("\nDistinct Names "+ distinctNames);
-        }
+
+        return  distinctNames;
+    }
 
 
     public static void userShuffle(ArrayList<Integer>absences)    {
