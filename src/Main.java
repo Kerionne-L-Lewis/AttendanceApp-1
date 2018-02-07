@@ -80,6 +80,13 @@ public class Main {
         distinctNames=initializeNames();
         System.out.println("\nThe distinct names are "+ distinctNames);
 
+        //Todo user define shuffle using names
+
+        //Todo randomly select one of the 5 names and add it to a new Arraylist
+        //randomly select  one  index and add it to the new list
+
+
+
 
 
     }
