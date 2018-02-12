@@ -82,7 +82,20 @@ public class Main {
 
         nameShuffle(distinctNames);
 
+        ArrayList<String>secondListNames=newList(distinctNames, absences);
+        System.out.println("\nList that has the same size as Absences list(" + secondListNames.size()+
+                ")" + secondListNames);
 
+
+
+    }
+
+    private static ArrayList<String> newList(ArrayList<String> distinctNames, ArrayList<Integer> absences) {
+        ArrayList<String>newNames= new ArrayList<>();
+        for (int i = 0; i <absences.size() ; i++) {
+            newNames.add(distinctNames.get(3));
+        }
+        return newNames;
     }
 
     private static void nameShuffle(ArrayList<String> distinctNames) {
