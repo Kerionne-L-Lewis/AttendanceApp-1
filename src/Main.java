@@ -76,63 +76,78 @@ public class Main {
 
         userShuffle(absences);
 
-        ArrayList<String>distinctNames=new ArrayList<>();
-        distinctNames=initializeNames();
-        System.out.println("\nThe distinct names are "+ distinctNames);
+        ArrayList<String> distinctNames = new ArrayList<>();
+        distinctNames = initializeNames();
+        System.out.println("\nThe distinct names are " + distinctNames );
 
+        nameShuffle(distinctNames);
 
 
     }
 
+    private static void nameShuffle(ArrayList<String> distinctNames) {
+        for (int i = 0; i < distinctNames.size(); i++) {
+            for (int j = 0; j < distinctNames.size(); j++) {
+                if (!(i % 2 == 0)) {
+                    String temp = distinctNames.get(i);
+                    distinctNames.set(i, distinctNames.get(j));
+                    distinctNames.set(j, temp);
+                }
+            }
+        }
+        System.out.println("\nUser defined shuffle Names"+ distinctNames);
+    }
+
+
     private static ArrayList<String> initializeNames() {
-        ArrayList<String>distinctNames= new ArrayList<>();
+        ArrayList<String> distinctNames = new ArrayList<>();
         distinctNames.add("Pauline");
         distinctNames.add("Joy");
         distinctNames.add("Heaven");
         distinctNames.add("Mindy");
         distinctNames.add("Rashad");
 
-        return  distinctNames;
+        return distinctNames;
     }
 
 
-    public static void userShuffle(ArrayList<Integer>absences)    {
-        for (int i = 0; i <absences.size() ; i++) {
-            for (int j = 0; j <absences.size() ; j++) {
-                if (absences.get(i)%2==0){
-                    int temp=absences.get(i);
-                    absences.set(i, absences.get(j) );
-                    absences.set(j, temp);
-                }
-            }
-        }
-        System.out.println("\nUser defined shuffled "+ absences);
-    }
-
-    public static void userSort (ArrayList<Integer> absences){
-        for (int i = 0; i <absences.size() ; i++) {
-            for (int j = 0; j <absences.size() ; j++) {
-                if (absences.get(i)<absences.get(j)){
-                    int temp=absences.get(i);
+    public static void userShuffle(ArrayList<Integer> absences) {
+        for (int i = 0; i < absences.size(); i++) {
+            for (int j = 0; j < absences.size(); j++) {
+                if (absences.get(i) % 2 == 0) {
+                    int temp = absences.get(i);
                     absences.set(i, absences.get(j));
                     absences.set(j, temp);
                 }
             }
         }
-        System.out.println("\nUser defined sort"+ absences);
+        System.out.println("\nUser defined shuffled " + absences);
     }
 
-     private static void outputMap(ArrayList<Integer> absences) {
-         Map<Integer, Integer> duplicateCount = countCopies(absences);
-         for (Map.Entry<Integer, Integer> dupe : duplicateCount.entrySet()) {
-             int key = dupe.getKey();
-             int value=dupe.getValue();
-             System.out.println("the key is " + key + " and its value is " + value );
-             System.out.print( key + "\t" );
-             stars( value );
+    public static void userSort(ArrayList<Integer> absences) {
+        for (int i = 0; i < absences.size(); i++) {
+            for (int j = 0; j < absences.size(); j++) {
+                if (absences.get(i) < absences.get(j)) {
+                    int temp = absences.get(i);
+                    absences.set(i, absences.get(j));
+                    absences.set(j, temp);
+                }
+            }
+        }
+        System.out.println("\nUser defined sort" + absences);
+    }
 
-             }
-         }
+    private static void outputMap(ArrayList<Integer> absences) {
+        Map<Integer, Integer> duplicateCount = countCopies(absences);
+        for (Map.Entry<Integer, Integer> dupe : duplicateCount.entrySet()) {
+            int key = dupe.getKey();
+            int value = dupe.getValue();
+            System.out.println("the key is " + key + " and its value is " + value);
+            System.out.print(key + "\t");
+            stars(value);
+
+        }
+    }
 
     private static void stars(int duplicateCount) {
         for (int i = 0; i < duplicateCount; i++) {
