@@ -78,21 +78,36 @@ public class Main {
 
         ArrayList<String> distinctNames = new ArrayList<>();
         distinctNames = initializeNames();
-        System.out.println("\nThe distinct names are " + distinctNames );
+        System.out.println("\nThe distinct names are " + distinctNames);
 
         nameShuffle(distinctNames);
 
-        ArrayList<String>secondListNames=newList(distinctNames, absences);
-        System.out.println("\nList that has the same size as Absences list(" + secondListNames.size()+
+        ArrayList<String> secondListNames = newList(distinctNames, absences);
+        System.out.println("\nList that has the same size as Absences list(" + secondListNames.size() +
                 ")" + secondListNames);
 
+        Boolean answer = allNamesUsedOnce(distinctNames);
+        System.out.println("\nWere all 5 names used at least once? " + answer);
 
 
     }
 
+    private static Boolean allNamesUsedOnce(ArrayList<String> distinctNames) {
+        boolean answer = true;
+        for (int i = 0; i < distinctNames.size(); i++) {
+            if (distinctNames.get(0).equals(distinctNames.get(2))) {
+                answer = false;
+            }
+        }return answer;
+        }
+
+
+
+
+
     private static ArrayList<String> newList(ArrayList<String> distinctNames, ArrayList<Integer> absences) {
-        ArrayList<String>newNames= new ArrayList<>();
-        for (int i = 0; i <absences.size() ; i++) {
+        ArrayList<String> newNames = new ArrayList<>();
+        for (int i = 0; i < absences.size(); i++) {
             newNames.add(distinctNames.get(3));
         }
         return newNames;
@@ -108,7 +123,7 @@ public class Main {
                 }
             }
         }
-        System.out.println("\nUser defined shuffle Names"+ distinctNames);
+        System.out.println("\nUser defined shuffle Names" + distinctNames);
     }
 
 
