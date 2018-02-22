@@ -1,4 +1,6 @@
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Main {
@@ -101,17 +103,22 @@ public class Main {
         int numberOFCoursesForName = howManyCourses(sameSizeStudentnames, "Joy");
         System.out.println("\nHow many courses does Joy have? " + numberOFCoursesForName);
 
-        ArrayList<Integer>whichCoursesNameFe=coursesNameFe( sameSizeStudentnames, "Rashad");
-        System.out.println("These are the course Rashad FE'D "+ whichCoursesNameFe);
+        ArrayList<Integer> whichCoursesNameFe = coursesNameFe(sameSizeStudentnames, "Rashad");
+        System.out.println("\nThese are the course Rashad FE'D " + whichCoursesNameFe);
 
-
+        todaysDate();
 
     }
 
+    private static void todaysDate() {
+        LocalDate today = LocalDate.now();
+        System.out.println("\n|Today's Date: " + today + " |");
+    }
+
     private static ArrayList<Integer> coursesNameFe(ArrayList<String> sameSizeStudentnames, String name) {
-        ArrayList<Integer>courses=new ArrayList<>();
-        for (int i = 0; i <sameSizeStudentnames.size() ; i++) {
-            if (sameSizeStudentnames.get(i).equals(name)){
+        ArrayList<Integer> courses = new ArrayList<>();
+        for (int i = 0; i < sameSizeStudentnames.size(); i++) {
+            if (sameSizeStudentnames.get(i).equals(name)) {
                 courses.add(i);
             }
         }
