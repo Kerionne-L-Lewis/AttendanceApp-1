@@ -90,25 +90,43 @@ public class Main {
         System.out.println("\nWere all 5 names used at least once? " + answer);
 
 
+        ArrayList<String> perfectAttendance = namesForPerfectAttendance(absences, secondListNames);
+        System.out.println("\nThe names of students with perfect attendance are: " + perfectAttendance);
+
+
+    }
+
+
+    private static ArrayList<String> namesForPerfectAttendance(ArrayList<Integer> absences, ArrayList<String> secondListNames) {
+        ArrayList<String> perfectAttendance = new ArrayList<>();
+        int index = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) == 0) {
+                index = i;
+                perfectAttendance.add(secondListNames.get(index));
+            }
+        }
+        return perfectAttendance;
     }
 
     private static Boolean allNamesUsedOnce(ArrayList<String> distinctNames) {
         boolean answer = true;
+        Random rand= new Random();
         for (int i = 0; i < distinctNames.size(); i++) {
-            if (distinctNames.get(0).equals(distinctNames.get(2))) {
+            int num= rand.nextInt(5);
+            if (distinctNames.get(num).equals(distinctNames.get(num))) {
                 answer = false;
             }
-        }return answer;
         }
-
-
-
-
+        return answer;
+    }
 
     private static ArrayList<String> newList(ArrayList<String> distinctNames, ArrayList<Integer> absences) {
         ArrayList<String> newNames = new ArrayList<>();
+        Random rand = new Random();
         for (int i = 0; i < absences.size(); i++) {
-            newNames.add(distinctNames.get(3));
+            int num = rand.nextInt(5);
+            newNames.add(distinctNames.get(num));
         }
         return newNames;
     }
