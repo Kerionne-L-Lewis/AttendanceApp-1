@@ -99,7 +99,23 @@ public class Main {
         System.out.println("\nThe names of students who FE'd" + userDefinedSet);
 
         int numberOFCoursesForName = howManyCourses(sameSizeStudentnames, "Joy");
-        System.out.println("How many courses does Joy have? " + numberOFCoursesForName);
+        System.out.println("\nHow many courses does Joy have? " + numberOFCoursesForName);
+
+        ArrayList<Integer>whichCoursesNameFe=coursesNameFe( sameSizeStudentnames, "Rashad");
+        System.out.println("These are the course Rashad FE'D "+ whichCoursesNameFe);
+
+
+
+    }
+
+    private static ArrayList<Integer> coursesNameFe(ArrayList<String> sameSizeStudentnames, String name) {
+        ArrayList<Integer>courses=new ArrayList<>();
+        for (int i = 0; i <sameSizeStudentnames.size() ; i++) {
+            if (sameSizeStudentnames.get(i).equals(name)){
+                courses.add(i);
+            }
+        }
+        return courses;
     }
 
     private static int howManyCourses(ArrayList<String> sameSizeStudentnames, String name) {
@@ -111,7 +127,6 @@ public class Main {
         }
         return count;
     }
-
 
     private static ArrayList<String> userSet(ArrayList<Integer> indexFe, ArrayList<String> sameSizeStudentnames) {
         ArrayList<String> feListofNames = new ArrayList<>();
@@ -133,7 +148,6 @@ public class Main {
         }
         return feNames;
     }
-
 
     private static ArrayList<String> namesForPerfectAttendance(ArrayList<Integer> absences, ArrayList<String> secondListNames) {
         ArrayList<String> perfectAttendance = new ArrayList<>();
