@@ -93,7 +93,32 @@ public class Main {
         ArrayList<String> perfectAttendance = namesForPerfectAttendance(absences, secondListNames);
         System.out.println("\nThe names of students with perfect attendance are: " + perfectAttendance);
 
+        ArrayList<String> sameSizeStudentnames = namesSameSizeFeList(indexFe, distinctNames);
 
+        ArrayList<String> userDefinedSet = userSet(indexFe, sameSizeStudentnames);
+        System.out.println("\nThe names of students who FE'd"+ userDefinedSet);
+    }
+
+
+    private static ArrayList<String> userSet(ArrayList<Integer> indexFe, ArrayList<String> sameSizeStudentnames) {
+        ArrayList<String> feListofNames = new ArrayList<>();
+        for (int i = 0; i < indexFe.size(); i++) {
+            if (indexFe.get(i) > 2 && !(sameSizeStudentnames.get(i).equals(sameSizeStudentnames)) ) {
+                    feListofNames.add(sameSizeStudentnames.get(i));
+            }
+        }
+        return feListofNames;
+    }
+
+    private static ArrayList<String> namesSameSizeFeList(ArrayList<Integer> indexFe, ArrayList<String> distinctNames) {
+        ArrayList<String> feNames = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < indexFe.size(); i++) {
+            int num = rand.nextInt(5);
+            feNames.add(distinctNames.get(num));
+
+        }
+        return feNames;
     }
 
 
@@ -111,9 +136,9 @@ public class Main {
 
     private static Boolean allNamesUsedOnce(ArrayList<String> distinctNames) {
         boolean answer = true;
-        Random rand= new Random();
+        Random rand = new Random();
         for (int i = 0; i < distinctNames.size(); i++) {
-            int num= rand.nextInt(5);
+            int num = rand.nextInt(5);
             if (distinctNames.get(num).equals(distinctNames.get(num))) {
                 answer = false;
             }
@@ -144,7 +169,6 @@ public class Main {
         System.out.println("\nUser defined shuffle Names" + distinctNames);
     }
 
-
     private static ArrayList<String> initializeNames() {
         ArrayList<String> distinctNames = new ArrayList<>();
         distinctNames.add("Pauline");
@@ -155,7 +179,6 @@ public class Main {
 
         return distinctNames;
     }
-
 
     public static void userShuffle(ArrayList<Integer> absences) {
         for (int i = 0; i < absences.size(); i++) {
@@ -200,7 +223,6 @@ public class Main {
             System.out.print("*");
         }
     }
-
 
     public static Map<Integer, Integer> countCopies(ArrayList<Integer> absences) {
         Map<Integer, Integer> countDupes = new HashMap<>();
